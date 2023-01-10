@@ -1,0 +1,79 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>Slide 1</section>
+				<section>
+					<section> Vertical 11</section>
+					<section> Vertical 12</section>
+					<section> Vertical 13</section>
+				</section>
+				<section>Slide 2</section>
+				<section>Slide 3
+					<aside class="notes"> Private notes for the speaker </aside>
+				</section>
+				<section>
+					<h2>The Lorenz Equations</h2>
+					\[
+				\begin{align*}
+				\mathcal{LL} &= \log \mathcal{L} = -N\lambda + \sum_ix_i \log \lambda - \log c \\
+				&= -13 \lambda + 72 \log \lambda - \log(c)
+				\end{align*}
+				\]
+				</section>
+
+				<section data-auto-animate>
+					<h2>The Lorenz Equations</h2>
+					Output of the encoder has to be independent of the sensitive attribute
+				  </section>
+
+				<section data-auto-animate>
+					<h2>Test</h2>
+					\[\begin{aligned}
+					\dot{x} &amp; = \sigma(y-x) \\
+					\dot{y} &amp; = \rho x - y - xz \\
+					\dot{z} &amp; = -\beta z + xy
+					\end{aligned} \]
+					
+					\[\begin{aligned}
+					\dot{x} &amp; = \sigma(y-x) \\
+					\dot{y} &amp; = \rho x - y - xz \\
+					\dot{z} &amp; = -\beta z + xy
+					\end{aligned} \]
+				  </section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+
+			});
+		</script>
+	</body>
+</html>

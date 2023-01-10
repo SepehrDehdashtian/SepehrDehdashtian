@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/dracula.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-auto-animate>
+					<h2>Fair Representation Learning on Graphs</h2>
+                    Sepehr Dehdashtian
+				  </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+					<h3>Towards a Unified Framework (NIFTY) for Fair and Stable Graph Representation Learning</h3>
+                    Agarwal et al. (UAI 2021)
+				  </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+				<section data-auto-animate>
+					<h3>Problem</h3>
+				  </section>
+
+				<section data-auto-animate>
+					<h3>Problem</h3>
+                    <ul>
+                        <li>Stability</li>
+                    </ul>
+				  </section>
+
+				<section data-auto-animate>
+					<h3>Problem</h3>
+                    <ul>
+                        <li>Stability</li>
+                        <li>Fairness</li>
+                    </ul>
+				  </section>
+                </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+
+                <section data-auto-animate>
+					<h3>Problem Setting</h3>
+                </section>
+
+				<section data-auto-animate>
+					<h3>Problem Setting</h3>
+                    <ul>
+                        <li><strong>Task:</strong> Node Classification</li>
+                    </ul>
+				  </section>
+
+				<section data-auto-animate>
+					<h3>Problem Setting</h3>
+                    <ul>
+                        <li><strong>Task:</strong> Node Classification</li>
+                        <li><strong>Fairness: </strong>Counterfactual Fairness</li>
+                    </ul>
+				  </section>
+
+				<section data-auto-animate>
+					<h3>Problem Setting</h3>
+                    <ul>
+                        <li><strong>Task:</strong> Node Classification</li>
+                        <li><strong>Fairness: </strong>Counterfactual Fairness</li>
+                        <li><strong>Stability: </strong>Lipschitz Continuity</li>
+                    </ul>
+				  </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+					<h3>Counterfactual Fairness</h3>
+				  </section>
+
+                <section data-auto-animate>
+					<h3>Counterfactual Fairness</h3>
+                    Output of the encoder has to be independent of the sensitive attribute
+				  </section>
+
+                <section data-auto-animate>
+					<h3>Counterfactual Fairness</h3>
+                    Output of the encoder has to be independent of the sensitive attribute
+                    \[\begin{aligned}
+					Enc(u) = Enc(\tilde{u}^s)
+					\end{aligned} \]
+				  </section>
+
+                <section data-auto-animate>
+					<h3>Lipschitz Continuity</h3>
+				  </section>
+
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+					<h3>Lipschitz Continuity</h3>
+                    $\| Enc(u) - Enc(\tilde{u}) \| \leq L \| \mathbf{\tilde{b}}_u - \mathbf{b}_u \|_p$
+				  </section>
+
+                <section data-auto-animate>
+					<h3>Lipschitz Continuity</h3>
+                    $\| Enc(u) - Enc(\tilde{u}) \| \leq$ <strong> $L$ </strong> $\| \mathbf{\tilde{b}}_u - \mathbf{b}_u \|_p$
+
+                    <ul>
+                        <li><strong> $L$: </strong> Lipschitz constant</li>
+                    </ul>
+				  </section>
+
+                <section data-auto-animate>
+					<h3>Lipschitz Continuity</h3>
+                    $\| Enc(u) - Enc(\tilde{u}) \| \leq L \| \mathbf{\tilde{b}}_u - $<strong>$\mathbf{b}_u$</strong>$ \|_p$
+
+                    <ul>
+                        <li> $L$: Lipschitz constant</li>
+                        <li> <strong> $\mathbf{b}_u$: </strong> [ $\mathbf{x}_u$ ; $\mathbf{I}_u$ ]</li>
+                    </ul>
+				  </section>
+
+
+                </section>
+
+                
+                <!-- ------------------- Slide ------------------- -->
+                <section data-auto-animate>
+                    <section data-auto-animate>
+                        <h3>Framework (NIFTY)</h3>
+                      </section>
+                
+                    <section data-auto-animate>
+                        <h3>Framework (NIFTY)</h3>
+                        <ul>
+                            <li>Perturbing Node Attributes</li>
+                            <li>Perturbing Sensitive Attribute</li>
+                            <li>Perturbing Graph Structure</li>
+                            <li>Fairness and Sensitivity Objective Function</li>
+                            <li>Overall  Objective Function</li>
+                        </ul>
+                      </section>
+                <!-- ------------------- Slide ------------------- -->      
+                    <section data-auto-animate>
+                        <h3>Framework (NIFTY)</h3>
+                        <ul>
+                            <li>Perturbing Node Attributes</li>
+                        </ul>
+                        \[ 
+                        \begin{aligned}
+                        \mathbf{\tilde{x}}_u = \mathbf{x}_u + \mathbf{r} \circ \delta
+                        \end{aligned}
+                        \]
+                        <strong>$\delta$:</strong> M-dim vector sampled from normal distribution
+                        <br>
+                        <strong>$\mathbf{r}$:</strong> M-dim vector sampled from Bernouli distribution
+                      </section>
+                <!-- ------------------- Slide ------------------- -->      
+                    <section data-auto-animate>
+                        <h3>Framework (NIFTY)</h3>
+                        <ul>
+                            <li>Perturbing Sensitive Attribute</li>
+                        </ul>
+                        
+                        \[ 
+                        \begin{aligned}
+                        \mathbf{u} \longrightarrow \mathbf{\tilde{u}}_s
+                        \end{aligned}
+                        \]
+
+                      </section>
+                <!-- ------------------- Slide ------------------- -->      
+                    <section data-auto-animate>
+                        <h3>Framework (NIFTY)</h3>
+                        <ul>
+                            <li>Perturbing Graph Structure</li>
+                        </ul>
+                        \[ 
+                        \begin{aligned}
+                        \mathbf{\tilde{A}} = \mathbf{A} \circ \mathbf{R}_e
+                        \end{aligned}
+                        \]
+                        <strong>$\mathbf{A}$:</strong> Adjacency Matrix
+                        <br>
+                        <strong>$\mathbf{R}_e$:</strong> $N \times N$ matrix sampled from Bernouli distribution
+                      </section>
+
+
+                <!-- ------------------- Slide ------------------- -->      
+                    <section data-auto-animate>
+                        <h3>Framework (NIFTY)</h3>
+                        <ul>
+                            <li>Fairness and Stability Objective Function</li>
+                        </ul>
+                        \[ 
+                        \begin{aligned}
+                        \mathcal{L}_s = \mathbb{E}_u \left[ 
+                            \frac{1}{2} \left( 
+                                D\left( 
+                            t \left( \mathbf{z}_u \right) 
+                            ,
+                            sg \left( \mathbf{\tilde{z}}_u \right)
+                            \right) 
+                        +
+                        D\left( 
+                            t \left( \mathbf{\tilde{z}}_u \right) 
+                            ,
+                            sg \left( \mathbf{z}_u \right)
+                            \right)
+                            \right) 
+                        \right]
+                        \end{aligned}
+                        \]
+                        <strong>$D$:</strong> Cosine Distance
+                        <br>
+                        <strong>$t$:</strong> $\mathbb{R}^d \longrightarrow \mathbb{R}^d$ transformer (MLP)
+                        <br>
+                        <strong>$\mathbf{z}_u$:</strong> Representation of node $u$
+                        <br>
+                        <strong>$\mathbf{\tilde{z}}_u$:</strong> Representation of perturbed node $u$
+                        <br>
+                        <strong>$sg$:</strong> Stopgrad
+                      </section>
+
+                <!-- ------------------- Slide ------------------- -->      
+                    <section data-auto-animate>
+                        <h3>Framework (NIFTY)</h3>
+                        <ul>
+                            <li>Overall Objective Function</li>
+                        </ul>
+                        \[ 
+                        \begin{aligned}
+                        \underset{\theta_{Enc}, \theta_t, \theta_f}{\text{min}} \mathbb{E}_u \left[ (1 - \lambda) \mathcal{L}_c \right] + \lambda \mathcal{L}_s
+                        \end{aligned}
+                        \]
+                        <strong>$\mathcal{L}_c$:</strong> Node Classification Loss
+                        <br>
+                        <strong>$\mathcal{L}_s$:</strong> Fairness and Stability Loss
+                        <br>
+                        <strong>$\lambda$:</strong> Regularization Coefficient
+                      </section>
+
+                </section>
+
+
+                <!-- ------------------- Slide ------------------- -->    
+            <section data-auto-animate>
+                <section data-auto-animate>
+                    <h3>Experiments</h3>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Experiments</h3>
+                    
+                    <dl>
+                        <dt>Datasets
+                        <dd> <ul>
+                            <li>German Credit Graph</li>
+                            <li>Recidivism Graph</li>
+                            <li>Credit Defaulter Graph</li>
+                            </ul>
+                    </dl>
+
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Experiments</h3>
+                    
+                    <dl>
+                        <dt>Evaluation Metrics
+                        <dd> <ul>
+                            <li>AUROC</li>
+                            <li>F1-Score</li>
+                            <li>Statistical Parity (SP)</li>
+                            <li>Equal Opportunity (EO)</li>
+                            </ul>
+                    </dl>
+                    
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Experiments</h3>
+                    <dl>
+                        <dt>Results
+                            <img data-src="nifty-results.png" width=100% height="500">
+                    </dl>
+                </section>
+
+                <section data-auto-animate>
+                    <h3>Experiments</h3>
+                    <dl>
+                        <dt>Results
+                        <dd> <ul>
+                            <li>NIFTY improves fairness and stability of GNNs</li>
+                            <li>NIFTY achieves group fairness</li>
+                            <li>NIFTY can find a trade-off between fairness, stability, and predictive performance</li>
+                            </ul>
+                    </dl>
+                </section>
+                
+            </section>
+
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script src="plugin/math/math.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+                slideNumber: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+
+			});
+		</script>
+	</body>
+</html>
